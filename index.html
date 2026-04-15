@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMPLA JR | Consultoria em Administração - UFT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ampla-blue: #0B192C;
+            --ampla-yellow: #FFC107;
+            --ampla-green: #10B981;
+            --bg-body: #FFFFFF;
+            --bg-section: #F8FAFC;
+            --text-main: #1A1A1A;
+            --text-muted: #64748B;
+            --border-light: #E2E8F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- Header --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 5%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-weight: 900;
+            font-size: 1.4rem;
+            color: var(--ampla-blue);
+            line-height: 1;
+        }
+
+        .logo-sub {
+            font-size: 0.65rem;
+            color: var(--ampla-green);
+            display: block;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        nav.nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin: 0 1.25rem;
+            transition: color 0.2s;
+        }
+
+        nav.nav-links a:hover { color: var(--ampla-green); }
+
+        .btn-pill {
+            padding: 12px 28px;
+            border-radius: 100px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-yellow { background-color: var(--ampla-yellow); color: var(--ampla-blue); }
+        .btn-yellow:hover { transform: scale(1.05); background-color: #f5b800; }
+
+        /* --- Hero --- */
+        .hero-container { padding: 1rem 5% 3rem; }
+
+        .hero-card {
+            background-color: var(--bg-section);
+            border-radius: 40px;
+            padding: 5rem 5%;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.04em;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 580px;
+        }
+
+        .uft-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .uft-dot { width: 8px; height: 8px; background: var(--ampla-green); border-radius: 50%; }
+
+        /* --- Solutions Section --- */
+        .section-padding { padding: 7rem 5%; }
+
+        .title-center { text-align: center; margin-bottom: 5rem; }
+        .title-center h2 { font-size: 2.8rem; font-weight: 900; margin-bottom: 1rem; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--ampla-blue);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+            transform: translateY(-8px);
+        }
+
+        .icon-box {
+            width: 64px;
+            height: 64px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        /* --- Diferencial UFT --- */
+        .uft-feature {
+            background: var(--ampla-blue);
+            color: white;
+            border-radius: 40px;
+            padding: 6rem 5%;
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+        }
+
+        .uft-feature h2 { color: white; font-size: 2.5rem; margin-bottom: 1.5rem; }
+        .uft-feature p { font-size: 1.1rem; opacity: 0.8; margin-bottom: 2rem; }
+
+        /* --- Footer --- */
+        footer {
+            background: #f1f5f9;
+            padding: 5rem 5% 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-col h4 { margin-bottom: 1.5rem; font-weight: 700; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.8rem; }
+        .footer-col a { text-decoration: none; color: var(--text-muted); font-size: 0.95rem; }
+        .footer-col a:hover { color: var(--ampla-green); }
+
+        /* --- Responsivo --- */
+        @media (max-width: 992px) {
+            .hero-card { grid-template-columns: 1fr; text-align: center; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content p { margin: 0 auto 2.5rem; }
+            .uft-feature { flex-direction: column; text-align: center; }
+            .footer-main { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo-group">
+            <div class="logo-text">
+                AMPLA JR
+                <span class="logo-sub">CONSULTORIA</span>
+            </div>
+        </a>
+        <nav class="nav-links">
+            <a href="#solucoes">Soluções</a>
+            <a href="#sobre">Nossa Base</a>
+            <a href="#contato">Contato</a>
+        </nav>
+        <a href="#" class="btn-pill btn-yellow">Agendar Diagnóstico</a>
+    </header>
+
+    <div class="hero-container">
+        <section class="hero-card">
+            <div class="hero-content">
+                <div class="uft-badge">
+                    <span class="uft-dot"></span>
+                    Administração UFT Palmas
+                </div>
+                <h1>Acelerando negócios com a energia universitária.</h1>
+                <p>Somos a consultoria estratégica formada pelos futuros administradores da UFT. Transformamos o rigor acadêmico em resultados de mercado para sua empresa.</p>
+                <a href="#solucoes" class="btn-pill btn-yellow" style="padding: 18px 40px; font-size: 1.1rem;">Ver nossas soluções</a>
+            </div>
+            <div style="text-align: right;">
+                <svg width="100%" height="300" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="80" fill="#E2E8F0" />
+                    <path d="M100 40L130 140H70L100 40Z" fill="#0B192C" />
+                    <rect x="90" y="140" width="20" height="20" fill="#FFC107" />
+                </svg>
+            </div>
+        </section>
+    </div>
+
+    <section id="solucoes" class="section-padding">
+        <div class="title-center">
+            <h2>Excelência em Gestão</h2>
+            <p style="color: var(--text-muted);">Soluções pautadas nas melhores práticas da Administração Moderna.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="icon-box" style="background: #FEF3C7; color: #D97706;">📊</div>
+                <h3>Gestão Empresarial</h3>
+                <p>Planejamento estratégico e modelagem de processos para empresas que buscam profissionalização e escala.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-box" style="background: #D1FAE5; color: #059669;">👥</div>
+                <h3>Gestão de Pessoas</h3>
+                <p>Recrutamento, seleção e análise de clima organizacional focados em alta performance e retenção.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-box" style="background: #DBEAFE; color: #2563EB;">💰</div>
+                <h3>Gestão Financeira</h3>
+                <p>Diagnóstico financeiro e estruturação de custos para garantir a saúde do seu caixa e lucro real.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-box" style="background: #F3F4F6; color: #4B5563;">🚀</div>
+                <h3>Eventos</h3>
+                <p>Organização profissional e logística com a credibilidade de quem entende de grandes projetos.</p>
+            </div>
+        </div>
+    </section>
+
+    <div style="padding: 0 5% 5rem;">
+        <section class="uft-feature">
+            <div style="flex: 1;">
+                <h2>A Teoria da UFT aplicada à sua Prática.</h2>
+                <p>Nossa base é o curso de Administração da Universidade Federal do Tocantins. Isso significa que sua empresa recebe soluções validadas por professores mestres e doutores, executadas por consultores imparáveis.</p>
+                <a href="#" class="btn-pill btn-yellow">Conhecer a Ampla Jr.</a>
+            </div>
+            <div style="flex: 0.8; background: rgba(255,255,255,0.1); padding: 3rem; border-radius: 30px;">
+                <h3 style="color: var(--ampla-yellow); margin-bottom: 1rem;">O Impacto Jr.</h3>
+                <p style="font-size: 0.95rem;">Consultoria de alto nível com investimento acessível, focado no desenvolvimento do ecossistema de Palmas.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-col">
+                <div class="logo-text" style="margin-bottom: 1rem;">AMPLA JR</div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Empresa Júnior do Curso de Administração<br>Universidade Federal do Tocantins - Campus Palmas.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Serviços</h4>
+                <ul>
+                    <li><a href="#">Financeiro</a></li>
+                    <li><a href="#">Estratégico</a></li>
+                    <li><a href="#">RH</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Institucional</h4>
+                <ul>
+                    <li><a href="#">Sobre nós</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Redes Sociais</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="text-align: center; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-light); padding-top: 2rem;">
+            &copy; 2026 AMPLA Consultoria Jr. | Administração UFT Palmas
+        </div>
+    </footer>
+
+</body>
+</html>
