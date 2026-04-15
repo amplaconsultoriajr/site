@@ -6,144 +6,210 @@
     <title>AMPLA JR | Consultoria Estratégica</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* ================== VARIÁVEIS ================== */
+        /* ================== VARIÁVEIS (PALETA AMPLA) ================== */
         :root {
-            --ampla-navy: #0B192C;
-            --ampla-yellow: #FFC107;
-            --ampla-green: #10B981;
+            /* Cores Principais - Substituindo o Vermelho da Caju pelo Azul da Ampla */
+            --brand-main: #0B192C; /* Azul Marinho Ampla */
+            --brand-accent: #FFC107; /* Amarelo Ampla */
+            --brand-accent-hover: #E5AD06;
+            --brand-green: #10B981; /* Verde Ampla */
             
+            /* Fundos e Textos */
             --bg-page: #FFFFFF;
-            --bg-light-green: #ECFDF5;
-            --text-main: #111827;
-            --text-light: #6B7280;
+            --bg-light: #F8FAFC;
+            --bg-soft-green: #ECFDF5;
+            --text-dark: #111827;
+            --text-muted: #4B5563;
             
-            --border-radius-lg: 32px;
-            --border-radius-md: 20px;
+            /* Bordas */
+            --radius-pill: 100px;
+            --radius-card: 24px;
+            --radius-section: 48px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-page); color: var(--text-main); line-height: 1.5; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-page); color: var(--text-dark); line-height: 1.5; overflow-x: hidden; }
         a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* Tipografia Caju Style */
+        h1, h2, h3 { font-weight: 900; letter-spacing: -0.04em; line-height: 1.1; }
+        
+        /* Botões Base */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 12px 24px; border-radius: var(--radius-pill);
+            font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: 0.2s; border: none; white-space: nowrap;
+        }
+        .btn-yellow { background: var(--brand-accent); color: var(--brand-main); padding: 16px 32px; font-size: 1.1rem; }
+        .btn-yellow:hover { background: var(--brand-accent-hover); transform: scale(1.02); }
+        .btn-outline { background: transparent; border: 1px solid #E5E7EB; color: var(--text-dark); }
+        .btn-outline:hover { border-color: var(--brand-main); }
+        .btn-main { background: var(--brand-main); color: #FFF; }
+        .btn-main:hover { opacity: 0.9; }
 
         /* ================== HEADER ================== */
         header {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 1.5rem 5%; background: #FFF; position: sticky; top: 0; z-index: 100;
+            padding: 1rem 4%; background: #FFF; position: sticky; top: 0; z-index: 1000;
         }
-        .logo img { height: 45px; width: auto; }
-        nav { display: flex; gap: 2rem; font-weight: 700; font-size: 0.95rem; }
-        .header-actions { display: flex; gap: 1rem; align-items: center; font-weight: 700; }
-        .btn-outline { padding: 10px 24px; border: 2px solid #E5E7EB; border-radius: 100px; transition: 0.2s; }
-        .btn-outline:hover { border-color: var(--ampla-navy); }
-        .btn-solid { background: var(--ampla-navy); color: #FFF; padding: 12px 28px; border-radius: 100px; transition: 0.2s; }
-        .btn-solid:hover { background: #152C4A; }
+        .logo img { height: 48px; width: auto; object-fit: contain; }
+        
+        nav.menu-center { display: flex; gap: 2rem; }
+        nav.menu-center a { font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 4px; }
+        nav.menu-center a::after { content: '⌄'; font-size: 1.2rem; margin-top: -4px; }
 
-        /* ================== SEÇÃO 1: HERO (Espelho Print 1) ================== */
-        .hero-container { padding: 2rem 5%; }
+        .header-actions { display: flex; gap: 1rem; align-items: center; }
+
+        /* ================== SEÇÃO 1: HERO (Print 143055) ================== */
+        .hero-container { padding: 1rem 4% 4rem; }
         .hero {
-            background: var(--ampla-navy); border-radius: var(--border-radius-lg);
+            background: var(--brand-main); border-radius: var(--radius-section);
             display: flex; justify-content: space-between; align-items: center;
-            padding: 5rem; color: #FFF; gap: 4rem; position: relative; overflow: hidden;
+            padding: 5rem 4%; color: #FFF; position: relative; overflow: hidden;
         }
-        .hero-content { flex: 1; max-width: 600px; position: relative; z-index: 2; }
-        .hero h1 { font-size: 3.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.03em; }
-        .hero p { font-size: 1.25rem; margin-bottom: 3rem; font-weight: 500; opacity: 0.9; }
+        .hero-text { flex: 1; max-width: 650px; z-index: 2; }
+        .hero h1 { font-size: clamp(3rem, 5vw, 4.5rem); margin-bottom: 1.5rem; }
+        .hero p { font-size: 1.25rem; margin-bottom: 3rem; font-weight: 500; opacity: 0.9; max-width: 500px; }
         
-        /* Formulário integrado estilo Caju */
         .email-form {
-            display: flex; background: #FFF; padding: 8px; border-radius: 100px;
-            max-width: 500px;
+            display: flex; background: #FFF; padding: 8px; border-radius: var(--radius-pill);
+            max-width: 550px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-        .email-form input {
-            flex: 1; border: none; outline: none; padding: 0 20px;
-            font-size: 1rem; font-family: 'Inter'; background: transparent;
-        }
-        .email-form button {
-            background: var(--ampla-yellow); color: var(--ampla-navy);
-            border: none; padding: 14px 32px; border-radius: 100px;
-            font-weight: 800; font-size: 1rem; cursor: pointer; transition: 0.2s;
-        }
-        .email-form button:hover { transform: scale(1.02); }
-
-        /* Imagem lateral do Hero */
-        .hero-image-wrapper { flex: 1; display: flex; justify-content: flex-end; position: relative; z-index: 2; }
-        .hero-image-bg {
-            background: var(--ampla-green); width: 100%; max-width: 450px; height: 500px;
-            border-radius: 20px 100px 20px 20px; display: flex; align-items: center; justify-content: center;
-            overflow: hidden; position: relative;
-        }
-        .hero-image-bg img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; opacity: 0.8; }
-
-        /* ================== SEÇÃO 2: SERVIÇOS (Espelho Print 3) ================== */
-        .services-section { background: var(--bg-light-green); padding: 6rem 5%; margin: 4rem 5%; border-radius: var(--border-radius-lg); text-align: center; }
-        .services-section h2 { font-size: 2.5rem; font-weight: 900; color: var(--ampla-navy); margin-bottom: 1rem; }
-        .services-section > p { font-size: 1.2rem; color: var(--text-light); margin-bottom: 4rem; }
-
-        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .service-card { background: #FFF; border-radius: var(--border-radius-md); overflow: hidden; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .service-img { height: 250px; background: #E5E7EB; width: 100%; } /* Placeholder para imagem real */
-        .service-content { padding: 2rem; text-align: center; }
-        .service-content h3 { font-size: 1.8rem; font-weight: 800; color: var(--ampla-navy); margin-bottom: 1rem; }
-        .service-content p { color: var(--text-light); font-weight: 500; }
-
-        /* ================== SEÇÃO 3: RESULTADOS (Espelho Print 6) ================== */
-        .results-section { padding: 2rem 5% 6rem; }
-        .results-box {
-            background: var(--ampla-navy); border-radius: var(--border-radius-lg);
-            display: grid; grid-template-columns: 1fr 1fr; padding: 5rem; gap: 4rem; color: #FFF;
-        }
-        .results-left h2 { font-size: 3.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 3rem; }
+        .email-form input { flex: 1; border: none; outline: none; padding: 0 24px; font-size: 1.05rem; font-family: 'Inter'; border-radius: var(--radius-pill); }
         
-        .results-list { border-left: 2px solid rgba(255,255,255,0.2); padding-left: 2rem; display: flex; flex-direction: column; gap: 2rem; }
-        .result-item { font-size: 1.4rem; font-weight: 700; opacity: 0.5; transition: 0.3s; cursor: pointer; }
-        .result-item.active { opacity: 1; position: relative; color: var(--ampla-yellow); }
-        .result-item.active::before { content: ''; position: absolute; left: -34px; top: 0; width: 4px; height: 100%; background: var(--ampla-yellow); border-radius: 4px; }
-
-        .results-right { position: relative; }
-        .results-image { width: 100%; height: 100%; background: #CBD5E1; border-radius: var(--border-radius-md); min-height: 400px; } /* Placeholder */
-        
-        /* Cartão flutuante */
-        .floating-card {
-            position: absolute; top: 20%; left: -10%; background: #FFF; color: var(--text-main);
-            padding: 2rem; border-radius: var(--border-radius-md); width: 280px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        .hero-image {
+            flex: 1; display: flex; justify-content: flex-end; position: relative; z-index: 2;
         }
-        .floating-card h4 { font-size: 3rem; font-weight: 900; color: var(--ampla-navy); line-height: 1; margin-bottom: 0.5rem; }
-        .floating-card p { font-size: 1.1rem; font-weight: 700; color: var(--text-light); }
-
-        /* ================== SEÇÃO 4: PORTES/PÚBLICO (Espelho Print 5) ================== */
-        .audience-section { padding: 4rem 5% 6rem; }
-        .audience-section h2 { font-size: 2.5rem; font-weight: 900; color: var(--ampla-navy); text-align: center; margin-bottom: 4rem; max-width: 800px; margin-inline: auto; }
-        
-        .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .audience-card {
-            height: 450px; border-radius: var(--border-radius-md); padding: 2rem;
-            display: flex; flex-direction: column; justify-content: space-between;
-            background: var(--ampla-navy); color: #FFF; position: relative; overflow: hidden;
+        .hero-card-mockup {
+            background: var(--brand-accent); width: 350px; height: 450px;
+            border-radius: 40px 200px 40px 40px; position: relative; overflow: hidden;
         }
-        /* Placeholders de fundo para os cartões */
-        .audience-card:nth-child(1) { background: linear-gradient(rgba(11,25,44,0.4), rgba(11,25,44,0.9)), url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80') center/cover; }
-        .audience-card:nth-child(2) { background: linear-gradient(rgba(11,25,44,0.4), rgba(11,25,44,0.9)), url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80') center/cover; }
-        .audience-card:nth-child(3) { background: linear-gradient(rgba(11,25,44,0.4), rgba(11,25,44,0.9)), url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80') center/cover; }
+        .hero-card-mockup img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; opacity: 0.8; }
+        
+        .floating-tag {
+            position: absolute; top: 40px; left: -40px; background: var(--brand-green);
+            color: #FFF; font-weight: 900; font-size: 1.5rem; padding: 15px 25px; border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); transform: rotate(-5deg); text-transform: uppercase;
+        }
 
-        .tag { background: #FFF; color: var(--ampla-green); font-weight: 800; padding: 8px 20px; border-radius: 100px; align-self: flex-start; }
-        .audience-card h3 { font-size: 1.8rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: #FFF; }
-        .audience-card a { font-weight: 700; text-decoration: underline; color: var(--ampla-yellow); }
+        /* ================== SEÇÃO 2: CENTRALIZE (Prints 143123 / 143129) ================== */
+        .centralize-section { background: var(--bg-soft-green); padding: 6rem 4%; margin: 2rem 4%; border-radius: var(--radius-section); text-align: center; }
+        .centralize-section > h2 { font-size: 3rem; margin-bottom: 1rem; color: var(--brand-main); }
+        .centralize-section > p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 4rem; }
 
-        /* ================== RESPONSIVO BÁSICO ================== */
+        .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 4rem; }
+        .feature-card { background: #FFF; border-radius: var(--radius-card); padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer; }
+        .feature-card:hover { transform: translateY(-5px); }
+        .feature-card-img { height: 220px; border-radius: 16px; background: #E5E7EB; margin-bottom: 1.5rem; overflow: hidden; }
+        .feature-card-img img { width: 100%; height: 100%; object-fit: cover; }
+        .feature-card h3 { font-size: 2rem; color: var(--brand-main); }
+
+        /* O grande painel vermelho (agora azul) em baixo dos cards */
+        .big-panel { background: var(--brand-main); border-radius: var(--radius-section); padding: 5rem 4%; display: flex; align-items: center; gap: 4rem; color: #FFF; text-align: left; }
+        .big-panel-text { flex: 1; }
+        .big-panel-text h2 { font-size: 3.5rem; margin-bottom: 1.5rem; }
+        .big-panel-text p { font-size: 1.25rem; opacity: 0.9; margin-bottom: 2rem; }
+        .big-panel-image { flex: 1; background: #FFF; border-radius: 24px; height: 350px; padding: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 10px; }
+        
+        /* Mini mockup UI dentro do painel */
+        .mock-header { height: 40px; background: #F1F5F9; border-radius: 8px; width: 100%; }
+        .mock-body { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; flex: 1; }
+        .mock-item { background: #F8FAFC; border-radius: 8px; }
+
+        /* ================== SEÇÃO 3: PÚBLICO (Print 143135) ================== */
+        .audience { padding: 6rem 4%; text-align: center; }
+        .audience > h2 { font-size: 3rem; margin-bottom: 4rem; max-width: 900px; margin-inline: auto; }
+        
+        .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: left; }
+        .aud-card { height: 500px; border-radius: var(--radius-card); padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; color: #FFF; }
+        .aud-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(11,25,44,0.2), rgba(11,25,44,0.9)); z-index: 1; }
+        .aud-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+        
+        .aud-tag { background: #FFF; color: var(--brand-green); font-weight: 800; padding: 8px 24px; border-radius: var(--radius-pill); align-self: flex-start; z-index: 2; }
+        .aud-content { z-index: 2; }
+        .aud-content h3 { font-size: 2rem; margin-bottom: 1rem; }
+        .aud-content a { font-weight: 700; text-decoration: underline; font-size: 1.1rem; }
+
+        /* ================== SEÇÃO 4: RESULTADO (Print 143139) ================== */
+        .results-container { padding: 0 4% 6rem; }
+        .results { background: var(--brand-main); border-radius: var(--radius-section); display: flex; padding: 6rem 5%; gap: 4rem; color: #FFF; }
+        .res-left { flex: 1; }
+        .res-left h2 { font-size: 3.5rem; margin-bottom: 3rem; }
+        .res-list { border-left: 2px solid rgba(255,255,255,0.2); display: flex; flex-direction: column; gap: 2.5rem; padding-left: 2rem; }
+        .res-item { font-size: 1.5rem; font-weight: 700; opacity: 0.5; transition: 0.3s; cursor: pointer; }
+        .res-item.active { opacity: 1; position: relative; }
+        .res-item.active::before { content: ''; position: absolute; left: -34px; top: 0; width: 4px; height: 100%; background: var(--brand-accent); border-radius: 4px; }
+
+        .res-right { flex: 1; position: relative; }
+        .res-img { width: 100%; height: 100%; background: #E5E7EB; border-radius: var(--radius-card); overflow: hidden; min-height: 400px; }
+        .res-img img { width: 100%; height: 100%; object-fit: cover; }
+        .res-float { position: absolute; top: 20%; left: -10%; background: #FFF; color: var(--text-dark); padding: 2.5rem; border-radius: var(--radius-card); width: 320px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .res-float h4 { font-size: 3.5rem; color: var(--brand-main); margin-bottom: 0.5rem; }
+        .res-float p { font-size: 1.2rem; font-weight: 700; color: var(--text-muted); }
+
+        /* ================== SEÇÃO 5: HISTÓRIAS (Prints 143144 / 143811) ================== */
+        .stories { padding: 6rem 4%; overflow: hidden; }
+        .stories h2 { font-size: 3rem; margin-bottom: 3rem; }
+        .video-carousel { display: flex; gap: 2rem; overflow-x: auto; padding-bottom: 2rem; scrollbar-width: none; }
+        .video-carousel::-webkit-scrollbar { display: none; }
+        .video-card { min-width: 600px; height: 350px; border-radius: var(--radius-card); position: relative; overflow: hidden; cursor: pointer; }
+        .video-card img { width: 100%; height: 100%; object-fit: cover; }
+        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--brand-main); width: 80px; height: 80px; border-radius: 20px; display: flex; align-items: center; justify-content: center; }
+        .play-btn::before { content: '▶'; color: #FFF; font-size: 2rem; }
+
+        .quote-section { display: flex; gap: 4rem; align-items: center; margin-top: 4rem; padding-top: 4rem; border-top: 1px solid #E5E7EB; }
+        .quote-logo { font-size: 2rem; font-weight: 900; color: var(--brand-main); width: 200px; }
+        .quote-text { flex: 1; }
+        .quote-text p { font-size: 2rem; font-weight: 500; color: var(--text-dark); margin-bottom: 1.5rem; line-height: 1.4; }
+        .quote-text span { font-weight: 700; color: var(--text-muted); font-size: 1.1rem; }
+
+        /* ================== SEÇÃO 6: SOLUÇÕES QUE CUIDAM (Print 143817) ================== */
+        .care-solutions { padding: 6rem 4%; text-align: center; }
+        .care-solutions h2 { font-size: 3rem; margin-bottom: 1rem; }
+        .care-solutions > p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 4rem; }
+        
+        .care-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; text-align: left; }
+        .care-card { border: 1px solid #E5E7EB; border-radius: var(--radius-card); padding: 1.5rem; }
+        .care-img-box { background: var(--bg-soft-green); height: 250px; border-radius: 16px; display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 2rem; }
+        /* Ícones gigantes estilo apps */
+        .app-icon { width: 80px; height: 80px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 900; color: #FFF; }
+        .care-card h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+        .care-card p { font-size: 1.1rem; color: var(--text-muted); }
+
+        /* ================== CTA PRÉ-FOOTER (Print 143827 topo) ================== */
+        .pre-footer-cta { text-align: center; padding: 2rem 4% 6rem; }
+        .pre-footer-cta .btn-main { font-size: 1.2rem; padding: 20px 40px; }
+
+        /* ================== SEÇÃO 7: FOOTER GIGANTE (Print 143827) ================== */
+        footer { background: var(--brand-main); color: #FFF; padding: 6rem 4% 2rem; border-radius: var(--radius-section) var(--radius-section) 0 0; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 3rem; margin-bottom: 4rem; }
+        
+        .footer-col h4 { font-size: 1.2rem; font-weight: 900; margin-bottom: 1.5rem; color: #FFF; }
+        .footer-col li { margin-bottom: 1rem; }
+        .footer-col a, .footer-col p { color: #D1D5DB; font-size: 0.95rem; font-weight: 500; transition: 0.2s; }
+        .footer-col a:hover { color: var(--brand-accent); }
+
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align: center; color: #9CA3AF; font-size: 0.9rem; }
+
+        /* ================== RESPONSIVO ================== */
         @media (max-width: 1024px) {
-            .hero, .results-box { flex-direction: column; padding: 3rem; }
-            .hero-image-wrapper, .results-right { width: 100%; margin-top: 2rem; }
-            .floating-card { left: 5%; top: -10%; }
+            .hero, .results { flex-direction: column; padding: 4rem 5%; }
+            .hero-image, .res-right { width: 100%; margin-top: 3rem; justify-content: center; }
+            .cards-grid, .audience-grid, .care-grid { grid-template-columns: 1fr; }
+            .quote-section { flex-direction: column; text-align: center; }
+            .res-float { left: 5%; top: -5%; }
         }
         @media (max-width: 768px) {
-            header nav { display: none; }
-            .services-grid, .audience-grid { grid-template-columns: 1fr; }
-            .hero h1, .results-left h2 { font-size: 2.5rem; }
-            .email-form { flex-direction: column; background: transparent; padding: 0; gap: 10px; }
-            .email-form input { background: #FFF; padding: 15px 20px; border-radius: 100px; }
+            nav.menu-center { display: none; }
+            .hero h1, .centralize-section > h2, .res-left h2, .stories h2, .care-solutions h2 { font-size: 2.5rem; }
+            .email-form { flex-direction: column; background: transparent; padding: 0; gap: 10px; box-shadow: none; }
+            .email-form input { padding: 15px 24px; background: #FFF; }
+            .video-card { min-width: 90vw; }
+            .big-panel { flex-direction: column; padding: 3rem 5%; }
         }
     </style>
 </head>
@@ -153,120 +219,263 @@
         <a href="#" class="logo">
             <img src="aplicações-logo-ampla-png.png" alt="AMPLA JR">
         </a>
-        <nav>
+        <nav class="menu-center">
+            <a href="#">Plataforma</a>
             <a href="#">Soluções</a>
-            <a href="#">A Empresa</a>
-            <a href="#">Impacto UFT</a>
+            <a href="#">Planos</a>
+            <a href="#">A Ampla</a>
         </nav>
         <div class="header-actions">
-            <a href="#" class="btn-outline">Área do Cliente</a>
-            <a href="#" class="btn-solid">Quero a Ampla</a>
+            <a href="#" class="btn btn-outline" style="border: none; font-weight: 700;">Login</a>
+            <a href="#" class="btn btn-outline">Demonstração</a>
+            <a href="#" class="btn btn-main">Quero Ampla</a>
         </div>
     </header>
 
     <div class="hero-container">
         <section class="hero">
-            <div class="hero-content">
+            <div class="hero-text">
                 <h1>Facilite a gestão e transforme os resultados da sua empresa</h1>
-                <p>Do planejamento financeiro à atração de talentos, centralize o desenvolvimento do seu negócio em uma consultoria universitária de excelência.</p>
+                <p>Do planejamento à operação, centralize estratégia, finanças e gestão de pessoas em uma consultoria universitária de excelência.</p>
                 
                 <div class="email-form">
                     <input type="email" placeholder="Seu e-mail corporativo">
-                    <button>Quero saber mais</button>
+                    <button class="btn btn-yellow">Quero saber mais</button>
                 </div>
             </div>
-            
-            <div class="hero-image-wrapper">
-                <div class="hero-image-bg">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" alt="Consultor Ampla">
+            <div class="hero-image">
+                <div class="floating-tag">Soluções<br>que dão<br>vontade<br>de crescer</div>
+                <div class="hero-card-mockup">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=500&q=80" alt="Consultor">
                 </div>
             </div>
         </section>
     </div>
 
-    <section class="services-section">
-        <h2>Centralize finanças, processos e pessoas com a Ampla</h2>
-        <p>Ganhe maturidade gerencial e foco no crescimento da sua empresa em Palmas.</p>
+    <section class="centralize-section">
+        <h2>Centralize gestão, finanças e pessoas com a Ampla</h2>
+        <p>Ganhe agilidade no dia a dia e foco no crescimento da sua empresa.</p>
 
-        <div class="services-grid">
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="Gestão" class="service-img">
-                <div class="service-content">
-                    <h3>Gestão Empresarial & Financeira</h3>
-                    <p>Estruturação de custos, plano de negócios e processos simplificados.</p>
-                </div>
+        <div class="cards-grid">
+            <div class="feature-card">
+                <div class="feature-card-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="Gestão"></div>
+                <h3>Estratégia</h3>
             </div>
-            
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=500&q=80" alt="RH" class="service-img">
-                <div class="service-content">
-                    <h3>Gestão de Pessoas</h3>
-                    <p>Recrutamento, pesquisa de clima e avaliações de desempenho integradas.</p>
-                </div>
+            <div class="feature-card">
+                <div class="feature-card-img"><img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=500&q=80" alt="Finanças"></div>
+                <h3>Finanças</h3>
             </div>
+            <div class="feature-card">
+                <div class="feature-card-img"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=500&q=80" alt="Pessoas"></div>
+                <h3>Pessoas</h3>
+            </div>
+        </div>
 
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=500&q=80" alt="Eventos" class="service-img">
-                <div class="service-content">
-                    <h3>Organização de Eventos</h3>
-                    <p>Logística, credenciamento e gestão de campeonatos como o Greve x Boleto.</p>
+        <div class="big-panel">
+            <div class="big-panel-text">
+                <h2>Conheça a nossa Consultoria</h2>
+                <p>A solução ideal para pequenas e médias empresas: modelagem de processos, gestão de custos e recrutamento em um único pacote — tudo integrado, validado pela UFT e com investimento acessível.</p>
+            </div>
+            <div class="big-panel-image">
+                <div class="mock-header"></div>
+                <div class="mock-body">
+                    <div class="mock-item" style="background: var(--brand-green); opacity: 0.2;"></div>
+                    <div class="mock-item"></div>
+                    <div class="mock-item"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="results-section">
-        <div class="results-box">
-            <div class="results-left">
-                <h2>Quem escolhe Ampla vê resultado!</h2>
-                <div class="results-list">
-                    <div class="result-item active">Decisões baseadas em caixa real</div>
-                    <div class="result-item">Mais facilidade para atrair e manter talentos</div>
-                    <div class="result-item">Processos operacionais organizados</div>
-                    <div class="result-item">Rigor e excelência da UFT</div>
-                </div>
-            </div>
-            
-            <div class="results-right">
-                <div class="results-image" style="background: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
-                
-                <div class="floating-card">
-                    <h4>100%</h4>
-                    <p>foco no desenvolvimento do ecossistema local.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="audience-section">
-        <h2>Do pequeno comércio ao grande evento, a Ampla deixa a rotina mais profissional</h2>
+    <section class="audience">
+        <h2>Da pequena empresa ao grande evento, a Ampla deixa a rotina mais profissional</h2>
         
         <div class="audience-grid">
-            <div class="audience-card">
-                <div class="tag" style="color: var(--ampla-yellow);">Pequenas</div>
-                <div>
-                    <h3>Tudo que você precisa para estruturar seu negócio do zero e sem amadorismo</h3>
+            <div class="aud-card">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80" alt="Pequenas">
+                <div class="aud-tag" style="color: var(--brand-green);">Pequenas</div>
+                <div class="aud-content">
+                    <h3>Tudo que você precisa para estruturar seu negócio de forma ágil e prática</h3>
                     <a href="#">Saiba mais ></a>
                 </div>
             </div>
 
-            <div class="audience-card">
-                <div class="tag">Médias</div>
-                <div>
-                    <h3>Uma consultoria completa para modernizar o RH e otimizar os custos</h3>
+            <div class="aud-card">
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80" alt="Médias">
+                <div class="aud-tag" style="color: var(--brand-accent);">Médias</div>
+                <div class="aud-content">
+                    <h3>Uma consultoria completa para modernizar a gestão e otimizar custos</h3>
                     <a href="#">Saiba mais ></a>
                 </div>
             </div>
 
-            <div class="audience-card">
-                <div class="tag" style="color: #F43F5E;">Eventos</div>
-                <div>
-                    <h3>Soluções modulares, de credenciamento à logística, do jeito que sua marca precisa</h3>
+            <div class="aud-card">
+                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80" alt="Grandes e Eventos">
+                <div class="aud-tag" style="color: #EF4444;">Eventos</div>
+                <div class="aud-content">
+                    <h3>Soluções multisserviços modulares, flexíveis, do jeito que sua marca precisa</h3>
                     <a href="#">Saiba mais ></a>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="results-container">
+        <section class="results">
+            <div class="res-left">
+                <h2>Quem escolhe Ampla vê resultado!</h2>
+                <div class="res-list">
+                    <div class="res-item active">Processos operacionais enxutos</div>
+                    <div class="res-item">Mais facilidade para atrair e manter talentos</div>
+                    <div class="res-item">Colaboradores mais engajados</div>
+                    <div class="res-item">Quem contrata, recomenda</div>
+                    <div class="res-item">Para empresas de todos os portes</div>
+                </div>
+            </div>
+            <div class="res-right">
+                <div class="res-img"><img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80" alt="Resultados"></div>
+                <div class="res-float">
+                    <h4>100%</h4>
+                    <p>de foco em alavancar o ecossistema empresarial de Palmas.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="stories">
+        <h2>Conheça histórias de quem está colhendo os frutos</h2>
+        
+        <div class="video-carousel">
+            <div class="video-card">
+                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80" alt="Video 1">
+                <div class="play-btn"></div>
+            </div>
+            <div class="video-card">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Video 2">
+                <div class="play-btn"></div>
+            </div>
+        </div>
+
+        <div class="quote-section">
+            <div class="quote-logo">INCOMUM</div>
+            <div class="quote-text">
+                <p>“A consultoria da Ampla é muito intuitiva e a gente não teve trabalho nenhum, organizou nossos processos de RH e nos deu total segurança.”</p>
+                <span>Stela Nesello, Diretora Incomum/Telealarme</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="care-solutions">
+        <h2>Soluções que cuidam do motor da sua empresa</h2>
+        <p>Cuidado completo, do planejamento à execução. A Ampla facilita a estruturação do seu negócio.</p>
+
+        <div class="care-grid">
+            <div class="care-card">
+                <div class="care-img-box" style="background: #FEF3C7;">
+                    <div class="app-icon" style="background: var(--brand-main);">📊</div>
+                    <div class="app-icon" style="background: #3B82F6;">📈</div>
+                    <div class="app-icon" style="background: var(--brand-main);">💰</div>
+                </div>
+                <h3>Estratégia e Finanças</h3>
+                <p>Diagnóstico profundo, plano de negócios, precificação e análise de custos. A Ampla conecta sua empresa às melhores práticas de administração.</p>
+            </div>
+
+            <div class="care-card">
+                <div class="care-img-box" style="background: #ECFDF5;">
+                    <div class="app-icon" style="background: var(--brand-main);">👥</div>
+                    <div class="app-icon" style="background: var(--brand-green);">🎯</div>
+                    <div class="app-icon" style="background: var(--brand-main);">📝</div>
+                </div>
+                <h3>Desenvolvimento de Pessoas</h3>
+                <p>Gestão automatizada de talentos, recrutamento certeiro, pesquisa de clima e plano de cargos e salários para reter os melhores profissionais.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="pre-footer-cta">
+        <a href="#" class="btn btn-main">Fale com um consultor</a>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>O essencial</h4>
+                <ul>
+                    <li><a href="#">Gestão Estratégica</a></li>
+                    <li><a href="#">Diagnóstico Financeiro</a></li>
+                    <li><a href="#">Recrutamento e Seleção</a></li>
+                    <li><a href="#">Eventos Corporativos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Módulos</h4>
+                <ul>
+                    <li><a href="#">Plano de Negócios</a></li>
+                    <li><a href="#">Pesquisa de Clima</a></li>
+                    <li><a href="#">Mapeamento de Processos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Soluções</h4>
+                <ul>
+                    <li><a href="#">Pequenas empresas</a></li>
+                    <li><a href="#">Médias empresas</a></li>
+                    <li><a href="#">Grandes empresas</a></li>
+                </ul>
+                <h4 style="margin-top: 2rem;">Por segmentos</h4>
+                <ul>
+                    <li><a href="#">Comércio</a></li>
+                    <li><a href="#">Serviços</a></li>
+                    <li><a href="#">Agronegócio</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>A Ampla</h4>
+                <ul>
+                    <li><a href="#">Sobre nós</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Processo Seletivo</a></li>
+                    <li><a href="#">Casos de Sucesso</a></li>
+                </ul>
+                <h4 style="margin-top: 2rem;">Pacotes</h4>
+                <ul>
+                    <li><a href="#">Planos de Consultoria</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <ul>
+                    <li><a href="#">Central de ajuda</a></li>
+                    <li><a href="#">Fale conosco</a></li>
+                    <li><a href="#">Ouvidoria</a></li>
+                </ul>
+                <h4 style="margin-top: 2rem;">Endereço</h4>
+                <p>Universidade Federal do Tocantins (UFT)<br>Campus Palmas, TO.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Segurança e excelência</h4>
+                <ul>
+                    <li><a href="#">Professores Orientadores</a></li>
+                    <li><a href="#">Metodologia Validada</a></li>
+                </ul>
+                <h4 style="margin-top: 2rem;">Jurídico</h4>
+                <ul>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Estatuto da EJ</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 AMPLA Consultoria Jr. Todos os direitos reservados. Feito com excelência universitária.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
