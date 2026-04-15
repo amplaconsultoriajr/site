@@ -3,520 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMPLA JR | Consultoria em Administração - UFT</title>
+    <title>AMPLA JR | Consultoria Estratégica</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* ==========================================================================
-           1. VARIÁVEIS DO SISTEMA (Design System Caju + Cores AMPLA)
-           ========================================================================== */
+        /* ================== VARIÁVEIS ================== */
         :root {
-            /* Cores da Marca AMPLA */
-            --brand-navy: #0B192C;
-            --brand-yellow: #FFC107;
-            --brand-green: #10B981;
+            --ampla-navy: #0B192C;
+            --ampla-yellow: #FFC107;
+            --ampla-green: #10B981;
             
-            /* Tons de Fundo (Estética Caju) */
-            --bg-page: #F8FAFC;
-            --bg-surface: #FFFFFF;
-            --bg-tab-active: #F1F5F9;
-            --bg-dark: #07101D;
+            --bg-page: #FFFFFF;
+            --bg-light-green: #ECFDF5;
+            --text-main: #111827;
+            --text-light: #6B7280;
             
-            /* Textos */
-            --text-main: #0F172A;
-            --text-muted: #475569;
-            --text-light: #94A3B8;
-            
-            /* Bordas e Sombras */
-            --border-soft: #E2E8F0;
-            --radius-pill: 100px;
-            --radius-card: 40px;
-            --radius-sm: 16px;
-            --shadow-float: 0 20px 40px -10px rgba(11, 25, 44, 0.08);
-            
-            /* Layout */
-            --container-max: 1200px;
+            --border-radius-lg: 32px;
+            --border-radius-md: 20px;
         }
 
-        /* ==========================================================================
-           2. RESET E BASE
-           ========================================================================== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-size: 16px; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--bg-page); 
-            color: var(--text-main); 
-            line-height: 1.5; 
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Tipografia Caju: Pesada, condensada e impactante */
-        h1, h2, h3, h4 { color: var(--brand-navy); letter-spacing: -0.04em; line-height: 1.1; font-weight: 900; }
-        p { color: var(--text-muted); }
-        
+        body { font-family: 'Inter', sans-serif; background: var(--bg-page); color: var(--text-main); line-height: 1.5; overflow-x: hidden; }
         a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
 
-        /* Botões Estilo Caju (Pílula) */
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center;
-            padding: 16px 36px; border-radius: var(--radius-pill);
-            font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: pointer; border: none; white-space: nowrap;
-        }
-        .btn-yellow { background: var(--brand-yellow); color: var(--brand-navy); }
-        .btn-yellow:hover { background: #E5AD06; transform: scale(1.02) translateY(-2px); box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3); }
-        .btn-navy { background: var(--brand-navy); color: #FFF; }
-        .btn-navy:hover { background: #152A4A; transform: scale(1.02) translateY(-2px); box-shadow: 0 10px 20px rgba(11, 25, 44, 0.2); }
-        .btn-outline { background: transparent; border: 2px solid var(--border-soft); color: var(--text-main); }
-        .btn-outline:hover { border-color: var(--brand-navy); color: var(--brand-navy); background: var(--bg-surface); }
-
-        /* ==========================================================================
-           3. HEADER (Navegação Sticky)
-           ========================================================================== */
+        /* ================== HEADER ================== */
         header {
-            position: sticky; top: 0; z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--border-soft);
-            padding: 1rem 5%;
-        }
-        .header-container {
-            max-width: var(--container-max); margin: 0 auto;
             display: flex; justify-content: space-between; align-items: center;
+            padding: 1.5rem 5%; background: #FFF; position: sticky; top: 0; z-index: 100;
         }
+        .logo img { height: 45px; width: auto; }
+        nav { display: flex; gap: 2rem; font-weight: 700; font-size: 0.95rem; }
+        .header-actions { display: flex; gap: 1rem; align-items: center; font-weight: 700; }
+        .btn-outline { padding: 10px 24px; border: 2px solid #E5E7EB; border-radius: 100px; transition: 0.2s; }
+        .btn-outline:hover { border-color: var(--ampla-navy); }
+        .btn-solid { background: var(--ampla-navy); color: #FFF; padding: 12px 28px; border-radius: 100px; transition: 0.2s; }
+        .btn-solid:hover { background: #152C4A; }
 
-        .logo-img { height: 48px; width: auto; object-fit: contain; }
-
-        /* Menu Desktop */
-        nav.nav-desktop { display: flex; gap: 2.5rem; align-items: center; }
-        nav.nav-desktop a { font-weight: 600; font-size: 1rem; color: var(--text-main); transition: color 0.2s; }
-        nav.nav-desktop a:hover { color: var(--brand-green); }
-
-        /* Menu Mobile Checkbox Hack */
-        .mobile-toggle { display: none; }
-        .hamburger { display: none; font-size: 1.8rem; color: var(--brand-navy); cursor: pointer; }
-
-        /* ==========================================================================
-           4. HERO SECTION (Impacto Caju)
-           ========================================================================== */
+        /* ================== SEÇÃO 1: HERO (Espelho Print 1) ================== */
+        .hero-container { padding: 2rem 5%; }
         .hero {
-            padding: 8rem 5% 6rem;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-            animation: fadeIn 0.8s ease-out;
+            background: var(--ampla-navy); border-radius: var(--border-radius-lg);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 5rem; color: #FFF; gap: 4rem; position: relative; overflow: hidden;
         }
-
-        .badge-uft {
-            background: var(--bg-surface); color: var(--brand-navy);
-            border: 1px solid var(--border-soft);
-            padding: 8px 24px; border-radius: var(--radius-pill);
-            font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
-            display: inline-flex; align-items: center; gap: 8px; margin-bottom: 2.5rem;
-            box-shadow: var(--shadow-float);
-        }
-        .badge-uft::before { content: ''; display: block; width: 8px; height: 8px; background: var(--brand-green); border-radius: 50%; }
-
-        /* Responsividade Extrema na Tipografia usando Clamp */
-        .hero h1 { font-size: clamp(3.5rem, 6vw, 5rem); margin-bottom: 1.5rem; }
-        .hero p { font-size: clamp(1.1rem, 2vw, 1.35rem); margin-bottom: 3rem; font-weight: 500; }
+        .hero-content { flex: 1; max-width: 600px; position: relative; z-index: 2; }
+        .hero h1 { font-size: 3.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.03em; }
+        .hero p { font-size: 1.25rem; margin-bottom: 3rem; font-weight: 500; opacity: 0.9; }
         
-        .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* ==========================================================================
-           5. SOCIAL PROOF (Marcas)
-           ========================================================================== */
-        .brands { padding: 0 5% 6rem; text-align: center; }
-        .brands p { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2rem; color: var(--text-light); }
-        .brands-grid {
-            display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; align-items: center;
-            font-weight: 900; font-size: 1.5rem; color: var(--text-light);
+        /* Formulário integrado estilo Caju */
+        .email-form {
+            display: flex; background: #FFF; padding: 8px; border-radius: 100px;
+            max-width: 500px;
         }
-        .brands-grid span { transition: color 0.3s; }
-        .brands-grid span:hover { color: var(--brand-navy); }
-
-        /* ==========================================================================
-           6. ABAS INTERATIVAS (A MÁGICA DA CAJU EM CSS)
-           ========================================================================== */
-        .solutions-wrapper {
-            background: var(--bg-surface);
-            border-radius: var(--radius-card) var(--radius-card) 0 0;
-            padding: 8rem 5%;
-            box-shadow: 0 -10px 40px rgba(0,0,0,0.02);
-            position: relative;
+        .email-form input {
+            flex: 1; border: none; outline: none; padding: 0 20px;
+            font-size: 1rem; font-family: 'Inter'; background: transparent;
         }
-
-        .solutions-header { text-align: center; margin-bottom: 5rem; }
-        .solutions-header h2 { font-size: clamp(2.5rem, 5vw, 3.5rem); }
-
-        .tabs-layout {
-            max-width: var(--container-max); margin: 0 auto;
-            display: grid; grid-template-columns: 340px 1fr; gap: 4rem;
+        .email-form button {
+            background: var(--ampla-yellow); color: var(--ampla-navy);
+            border: none; padding: 14px 32px; border-radius: 100px;
+            font-weight: 800; font-size: 1rem; cursor: pointer; transition: 0.2s;
         }
+        .email-form button:hover { transform: scale(1.02); }
 
-        /* Ocultar os botões de rádio que controlam a lógica */
-        input[name="caju-tabs"] { display: none; }
-
-        /* Menu Lateral (Navegação das Abas) */
-        .tabs-sidebar { display: flex; flex-direction: column; gap: 0.5rem; }
-        .tab-label {
-            display: flex; align-items: center; gap: 1.2rem;
-            padding: 1.25rem 1.5rem; border-radius: var(--radius-sm);
-            font-weight: 700; font-size: 1.15rem; color: var(--text-muted);
-            cursor: pointer; transition: all 0.2s;
-            border: 2px solid transparent;
+        /* Imagem lateral do Hero */
+        .hero-image-wrapper { flex: 1; display: flex; justify-content: flex-end; position: relative; z-index: 2; }
+        .hero-image-bg {
+            background: var(--ampla-green); width: 100%; max-width: 450px; height: 500px;
+            border-radius: 20px 100px 20px 20px; display: flex; align-items: center; justify-content: center;
+            overflow: hidden; position: relative;
         }
-        .tab-label:hover { background: var(--bg-page); }
+        .hero-image-bg img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; opacity: 0.8; }
+
+        /* ================== SEÇÃO 2: SERVIÇOS (Espelho Print 3) ================== */
+        .services-section { background: var(--bg-light-green); padding: 6rem 5%; margin: 4rem 5%; border-radius: var(--border-radius-lg); text-align: center; }
+        .services-section h2 { font-size: 2.5rem; font-weight: 900; color: var(--ampla-navy); margin-bottom: 1rem; }
+        .services-section > p { font-size: 1.2rem; color: var(--text-light); margin-bottom: 4rem; }
+
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .service-card { background: #FFF; border-radius: var(--border-radius-md); overflow: hidden; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .service-img { height: 250px; background: #E5E7EB; width: 100%; } /* Placeholder para imagem real */
+        .service-content { padding: 2rem; text-align: center; }
+        .service-content h3 { font-size: 1.8rem; font-weight: 800; color: var(--ampla-navy); margin-bottom: 1rem; }
+        .service-content p { color: var(--text-light); font-weight: 500; }
+
+        /* ================== SEÇÃO 3: RESULTADOS (Espelho Print 6) ================== */
+        .results-section { padding: 2rem 5% 6rem; }
+        .results-box {
+            background: var(--ampla-navy); border-radius: var(--border-radius-lg);
+            display: grid; grid-template-columns: 1fr 1fr; padding: 5rem; gap: 4rem; color: #FFF;
+        }
+        .results-left h2 { font-size: 3.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 3rem; }
         
-        .tab-icon {
-            width: 48px; height: 48px; border-radius: 12px;
-            background: var(--bg-page); display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; transition: all 0.3s;
-        }
+        .results-list { border-left: 2px solid rgba(255,255,255,0.2); padding-left: 2rem; display: flex; flex-direction: column; gap: 2rem; }
+        .result-item { font-size: 1.4rem; font-weight: 700; opacity: 0.5; transition: 0.3s; cursor: pointer; }
+        .result-item.active { opacity: 1; position: relative; color: var(--ampla-yellow); }
+        .result-item.active::before { content: ''; position: absolute; left: -34px; top: 0; width: 4px; height: 100%; background: var(--ampla-yellow); border-radius: 4px; }
 
-        /* Área de Conteúdo das Abas */
-        .tab-content {
-            display: none; /* Escondido por padrão */
-            background: var(--bg-page);
-            border-radius: var(--radius-card);
-            padding: 5rem;
-            border: 1px solid var(--border-soft);
-            position: relative; overflow: hidden;
-        }
-        .tab-content h3 { font-size: 2.5rem; margin-bottom: 1.5rem; }
-        .tab-content p { font-size: 1.2rem; margin-bottom: 3rem; max-width: 600px; }
-
-        /* Grid de Benefícios dentro do Card */
-        .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3.5rem; }
-        .benefit-item { display: flex; align-items: center; gap: 1rem; }
-        .benefit-icon { width: 32px; height: 32px; border-radius: 50%; background: var(--bg-surface); display: flex; align-items: center; justify-content: center; color: var(--brand-green); font-weight: 900; box-shadow: var(--shadow-float); }
-        .benefit-item span { font-weight: 700; font-size: 1.05rem; color: var(--brand-navy); }
-
-        /* LÓGICA DE ESTADO ATIVO (QUANDO A ABA É CLICADA) */
-        /* 1. Muda a cor do botão na sidebar */
-        #tab-gestao:checked ~ .tabs-layout .tabs-sidebar label[for="tab-gestao"],
-        #tab-financas:checked ~ .tabs-layout .tabs-sidebar label[for="tab-financas"],
-        #tab-rh:checked ~ .tabs-layout .tabs-sidebar label[for="tab-rh"],
-        #tab-eventos:checked ~ .tabs-layout .tabs-sidebar label[for="tab-eventos"] {
-            background: var(--bg-surface); color: var(--brand-navy);
-            border-color: var(--border-soft); box-shadow: var(--shadow-float);
-        }
-
-        /* 2. Colore o ícone da aba ativa baseada na paleta AMPLA */
-        #tab-gestao:checked ~ .tabs-layout .tabs-sidebar label[for="tab-gestao"] .tab-icon { background: #EFF6FF; color: #3B82F6; }
-        #tab-financas:checked ~ .tabs-layout .tabs-sidebar label[for="tab-financas"] .tab-icon { background: #FFFBEB; color: #D97706; }
-        #tab-rh:checked ~ .tabs-layout .tabs-sidebar label[for="tab-rh"] .tab-icon { background: #ECFDF5; color: #059669; }
-        #tab-eventos:checked ~ .tabs-layout .tabs-sidebar label[for="tab-eventos"] .tab-icon { background: #F1F5F9; color: #475569; }
-
-        /* 3. Exibe o conteúdo correspondente */
-        #tab-gestao:checked ~ .tabs-layout .tabs-panels #panel-gestao,
-        #tab-financas:checked ~ .tabs-layout .tabs-panels #panel-financas,
-        #tab-rh:checked ~ .tabs-layout .tabs-panels #panel-rh,
-        #tab-eventos:checked ~ .tabs-layout .tabs-panels #panel-eventos {
-            display: block;
-            animation: slideUpFade 0.4s ease-out forwards;
-        }
-
-        @keyframes slideUpFade {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ==========================================================================
-           7. DEPOIMENTOS E EQUIPE (PROVA SOCIAL FORTE)
-           ========================================================================== */
-        .impact-section {
-            padding: 8rem 5%; background: var(--brand-navy); color: var(--bg-surface);
-            text-align: center; border-radius: var(--radius-card); margin: 0 2% 6rem;
-        }
-        .impact-content { max-width: 800px; margin: 0 auto; }
-        .impact-content h2 { color: var(--brand-yellow); font-size: 2rem; margin-bottom: 3rem; }
-        .quote { font-size: 1.8rem; font-weight: 300; line-height: 1.6; margin-bottom: 2rem; font-style: italic; }
-        .author { font-weight: 800; font-size: 1.2rem; }
-        .author span { display: block; font-weight: 500; font-size: 0.95rem; color: var(--text-light); margin-top: 5px; }
-
-        .team-grid { margin-top: 5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 4rem; }
-        .team-pill {
-            display: inline-flex; align-items: center; gap: 10px;
-            background: rgba(255,255,255,0.05); padding: 12px 24px; border-radius: var(--radius-pill);
-            border: 1px solid rgba(255,255,255,0.1); font-weight: 600;
-        }
-        .team-pill span { color: var(--brand-yellow); font-weight: 800; }
-
-        /* ==========================================================================
-           8. FAQ (ACCORDION ESTILO CAJU)
-           ========================================================================== */
-        .faq { padding: 4rem 5% 8rem; max-width: 900px; margin: 0 auto; }
-        .faq h2 { text-align: center; font-size: 3rem; margin-bottom: 4rem; }
-        details { background: var(--bg-surface); border: 2px solid transparent; border-radius: var(--radius-sm); margin-bottom: 1rem; transition: all 0.3s; }
-        details[open] { border-color: var(--brand-yellow); box-shadow: var(--shadow-float); padding-bottom: 1.5rem; }
-        summary { padding: 1.5rem 2rem; font-weight: 800; font-size: 1.2rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--brand-navy); list-style: none; }
-        summary::-webkit-details-marker { display: none; }
-        summary::after { content: '+'; font-size: 2rem; font-weight: 400; color: var(--brand-green); transition: transform 0.3s; background: #ECFDF5; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-        details[open] summary::after { transform: rotate(45deg); background: var(--brand-yellow); color: var(--brand-navy); }
-        .faq-text { padding: 0 2rem; color: var(--text-muted); font-size: 1.1rem; line-height: 1.7; }
-
-        /* ==========================================================================
-           9. BOTTOM CTA E FOOTER
-           ========================================================================== */
-        .bottom-cta { padding: 0 5% 6rem; max-width: var(--container-max); margin: 0 auto; }
-        .cta-card { background: var(--brand-yellow); border-radius: var(--radius-card); padding: 6rem 5%; text-align: center; }
-        .cta-card h2 { font-size: clamp(2.5rem, 4vw, 3.5rem); margin-bottom: 1.5rem; color: var(--brand-navy); }
-        .cta-card p { font-size: 1.25rem; color: var(--brand-navy); font-weight: 500; margin-bottom: 3rem; opacity: 0.9; }
-
-        footer { background: var(--bg-dark); color: #FFF; padding: 6rem 5% 3rem; border-radius: var(--radius-card) var(--radius-card) 0 0; }
-        .footer-grid { max-width: var(--container-max); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+        .results-right { position: relative; }
+        .results-image { width: 100%; height: 100%; background: #CBD5E1; border-radius: var(--border-radius-md); min-height: 400px; } /* Placeholder */
         
-        .footer-logo-box { background: var(--bg-surface); padding: 16px 24px; border-radius: var(--radius-sm); display: inline-block; margin-bottom: 1.5rem; }
-        .footer-logo-img { height: 45px; width: auto; object-fit: contain; display: block; }
-        
-        .footer-col h4 { color: var(--brand-yellow); font-size: 1.1rem; margin-bottom: 1.5rem; }
-        .footer-col li { margin-bottom: 1rem; }
-        .footer-col a { color: var(--text-light); font-weight: 500; transition: color 0.2s; }
-        .footer-col a:hover { color: var(--brand-green); }
-        
-        .footer-bottom { text-align: center; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); color: var(--text-light); font-size: 0.9rem; }
+        /* Cartão flutuante */
+        .floating-card {
+            position: absolute; top: 20%; left: -10%; background: #FFF; color: var(--text-main);
+            padding: 2rem; border-radius: var(--border-radius-md); width: 280px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .floating-card h4 { font-size: 3rem; font-weight: 900; color: var(--ampla-navy); line-height: 1; margin-bottom: 0.5rem; }
+        .floating-card p { font-size: 1.1rem; font-weight: 700; color: var(--text-light); }
 
-        /* ==========================================================================
-           10. RESPONSIVIDADE (MOBILE & TABLET)
-           ========================================================================== */
+        /* ================== SEÇÃO 4: PORTES/PÚBLICO (Espelho Print 5) ================== */
+        .audience-section { padding: 4rem 5% 6rem; }
+        .audience-section h2 { font-size: 2.5rem; font-weight: 900; color: var(--ampla-navy); text-align: center; margin-bottom: 4rem; max-width: 800px; margin-inline: auto; }
+        
+        .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .audience-card {
+            height: 450px; border-radius: var(--border-radius-md); padding: 2rem;
+            display: flex; flex-direction: column; justify-content: space-between;
+            background: var(--ampla-navy); color: #FFF; position: relative; overflow: hidden;
+        }
+        /* Placeholders de fundo para os cartões */
+        .audience-card:nth-child(1) { background: linear-gradient(rgba(11,25,44,0.4), rgba(11,25,44,0.9)), url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80') center/cover; }
+        .audience-card:nth-child(2) { background: linear-gradient(rgba(11,25,44,0.4), rgba(11,25,44,0.9)), url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80') center/cover; }
+        .audience-card:nth-child(3) { background: linear-gradient(rgba(11,25,44,0.4), rgba(11,25,44,0.9)), url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80') center/cover; }
+
+        .tag { background: #FFF; color: var(--ampla-green); font-weight: 800; padding: 8px 20px; border-radius: 100px; align-self: flex-start; }
+        .audience-card h3 { font-size: 1.8rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: #FFF; }
+        .audience-card a { font-weight: 700; text-decoration: underline; color: var(--ampla-yellow); }
+
+        /* ================== RESPONSIVO BÁSICO ================== */
         @media (max-width: 1024px) {
-            .tabs-layout { grid-template-columns: 1fr; gap: 2rem; }
-            .tabs-sidebar { flex-direction: row; overflow-x: auto; padding-bottom: 1rem; -webkit-overflow-scrolling: touch; }
-            .tab-label { white-space: nowrap; flex-shrink: 0; }
-            .tab-content { padding: 3rem; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .hero, .results-box { flex-direction: column; padding: 3rem; }
+            .hero-image-wrapper, .results-right { width: 100%; margin-top: 2rem; }
+            .floating-card { left: 5%; top: -10%; }
         }
-
         @media (max-width: 768px) {
-            /* Menu Mobile */
-            .hamburger { display: block; }
-            nav.nav-desktop, .header-container .btn { display: none; }
-            .mobile-toggle:checked ~ nav.nav-desktop { display: flex; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-surface); flex-direction: column; padding: 2rem; box-shadow: var(--shadow-float); }
-            
-            .impact-section { margin: 0 0 4rem; border-radius: 0; padding: 4rem 5%; }
-            .benefits-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; }
-            .footer-logo-box { display: flex; justify-content: center; margin: 0 auto 1.5rem; }
-            .cta-card { padding: 4rem 2rem; }
+            header nav { display: none; }
+            .services-grid, .audience-grid { grid-template-columns: 1fr; }
+            .hero h1, .results-left h2 { font-size: 2.5rem; }
+            .email-form { flex-direction: column; background: transparent; padding: 0; gap: 10px; }
+            .email-form input { background: #FFF; padding: 15px 20px; border-radius: 100px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="header-container">
-            <a href="#" class="logo">
-                <img src="aplicacoes-logo-ampla-png.png" alt="AMPLA Consultoria Jr." class="logo-img">
-            </a>
-            
-            <input type="checkbox" id="menu-check" class="mobile-toggle">
-            <label for="menu-check" class="hamburger">☰</label>
-
-            <nav class="nav-desktop">
-                <a href="#solucoes">Soluções</a>
-                <a href="#sobre">A Empresa</a>
-                <a href="#faq">Dúvidas Frequentes</a>
-            </nav>
-            <a href="#contato" class="btn btn-navy">Falar com Consultor</a>
+        <a href="#" class="logo">
+            <img src="aplicações-logo-ampla-png.png" alt="AMPLA JR">
+        </a>
+        <nav>
+            <a href="#">Soluções</a>
+            <a href="#">A Empresa</a>
+            <a href="#">Impacto UFT</a>
+        </nav>
+        <div class="header-actions">
+            <a href="#" class="btn-outline">Área do Cliente</a>
+            <a href="#" class="btn-solid">Quero a Ampla</a>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="badge-uft">Administração UFT • Palmas, TO</div>
-        <h1>Sua empresa preparada para <span>decolar.</span></h1>
-        <p>Desenvolvemos negócios unindo o rigor analítico da Universidade Federal do Tocantins com soluções práticas em gestão, finanças e pessoas.</p>
-        <div class="hero-actions">
-            <a href="#solucoes" class="btn btn-yellow">Conhecer Soluções</a>
-            <a href="#contato" class="btn btn-outline">Agendar Diagnóstico Gratuito</a>
-        </div>
-    </section>
-
-    <section class="brands">
-        <p>Empresas e instituições que confiam no impacto AMPLA</p>
-        <div class="brands-grid">
-            <span>UFT</span>
-            <span>INCOMUM</span>
-            <span>TELEALARME</span>
-            <span>CIEE</span>
-        </div>
-    </section>
-
-    <input type="radio" name="caju-tabs" id="tab-gestao" checked>
-    <input type="radio" name="caju-tabs" id="tab-financas">
-    <input type="radio" name="caju-tabs" id="tab-rh">
-    <input type="radio" name="caju-tabs" id="tab-eventos">
-
-    <section id="solucoes" class="solutions-wrapper">
-        <div class="solutions-header">
-            <h2>Portfólio Estratégico</h2>
-        </div>
-
-        <div class="tabs-layout">
-            <div class="tabs-sidebar">
-                <label for="tab-gestao" class="tab-label">
-                    <div class="tab-icon">📈</div> Gestão Empresarial
-                </label>
-                <label for="tab-financas" class="tab-label">
-                    <div class="tab-icon">💡</div> Gestão Financeira
-                </label>
-                <label for="tab-rh" class="tab-label">
-                    <div class="tab-icon">🤝</div> Gestão de Pessoas
-                </label>
-                <label for="tab-eventos" class="tab-label">
-                    <div class="tab-icon">🎯</div> Eventos Corporativos
-                </label>
-            </div>
-
-            <div class="tabs-panels">
+    <div class="hero-container">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Facilite a gestão e transforme os resultados da sua empresa</h1>
+                <p>Do planejamento financeiro à atração de talentos, centralize o desenvolvimento do seu negócio em uma consultoria universitária de excelência.</p>
                 
-                <div class="tab-content" id="panel-gestao">
-                    <h3>Estruture para escalar.</h3>
-                    <p>Aplicamos fundamentos avançados de administração estrutural para tirar sua empresa do caos operacional e colocá-la na rota estratégica.</p>
-                    <div class="benefits-grid">
-                        <div class="benefit-item"><div class="benefit-icon">✓</div><span>Plano de Negócios</span></div>
-                        <div class="benefit-item"><div class="benefit-icon">✓</div><span>Mapeamento de Processos</span></div>
-                        <div class="benefit-item"><div class="benefit-icon">✓</div><span>Planejamento Estratégico</span></div>
-                        <div class="benefit-item"><div class="benefit-icon">✓</div><span>Auditoria Operacional</span></div>
-                    </div>
-                    <a href="#contato" class="btn btn-navy">Solicitar Proposta de Gestão</a>
+                <div class="email-form">
+                    <input type="email" placeholder="Seu e-mail corporativo">
+                    <button>Quero saber mais</button>
                 </div>
-
-                <div class="tab-content" id="panel-financas">
-                    <h3>Decisões baseadas em caixa real.</h3>
-                    <p>Aplicamos matemática financeira e sistemas de amortização para diagnosticar seu fluxo de caixa e garantir uma precificação que gera lucro verdadeiro.</p>
-                    <div class="benefits-grid">
-                        <div class="benefit-item"><div class="benefit-icon">✓</div><span>Diagnóstico Profundo</span></div>
-                        <div class="benefit-item"><div class="benefit-icon">✓</div><span>Estruturação de Custos</span></div>
-                        <div class="benefit-item"><div class="benefit-icon">✓</div><span>Precificação de Produtos</span></div>
-                        <div class="benefit-item"><div class="benefit-icon">✓</div><span>Análise de Viabilidade</span></div>
-                    </div>
-                    <a href="#contato" class="btn btn-navy">Falar com Analista Financeiro</a>
-                </div>
-
-                <div class="tab-content" id="panel-rh">
-                    <h3>Atraia e retenha os melhores.</h3>
-                    <p>O sucesso de um negócio depende de quem o opera. Estruturamos o clima organizacional para que você contrate alinhado à sua cultura.</p>
-                    <div class="benefits-grid">
-                        <div class="benefit-item"><div class="benefit-icon">✓</div><span>Recrutamento e Seleção</span></div>
-                        <div class="benefit-item"><div class="benefit-icon">✓</div><span>Pesquisa de Clima</span></div>
-                        <div class="benefit-item"><div class="benefit-icon">✓</div><span>Cargos e Salários</span></div>
-                        <div class="benefit-item"><div class="benefit-icon">✓</div><span>Avaliação de Desempenho</span></div>
-                    </div>
-                    <a href="#contato" class="btn btn-navy">Ver Metodologia de RH</a>
-                </div>
-
-                <div class="tab-content" id="panel-eventos">
-                    <h3>Logística e execução impecáveis.</h3>
-                    <p>Da organização de eventos esportivos universitários até grandes congressos corporativos, garantimos credibilidade e execução sem falhas.</p>
-                    <div class="benefits-grid">
-                        <div class="benefit-item"><div class="benefit-icon">✓</div><span>Logística Operacional</span></div>
-                        <div class="benefit-item"><div class="benefit-icon">✓</div><span>Credenciamento Ágil</span></div>
-                        <div class="benefit-item"><div class="benefit-icon">✓</div><span>Identidade do Evento</span></div>
-                        <div class="benefit-item"><div class="benefit-icon">✓</div><span>Gestão de Equipes</span></div>
-                    </div>
-                    <a href="#contato" class="btn btn-navy">Planejar Meu Evento</a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="sobre" class="impact-section">
-        <div class="impact-content">
-            <h2>O impacto da consultoria AMPLA</h2>
-            <p class="quote">"A Ampla é um suporte muito importante tanto na captação quanto na seleção de profissionais. O processo adotado nos transmite tranquilidade e confiança. A agilidade em nos atender supera as expectativas."</p>
-            <div class="author">
-                Stela Nesello
-                <span>Incomum / Telealarme</span>
             </div>
             
-            <div class="team-grid">
-                <p style="text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); font-size: 0.85rem; margin-bottom: 1.5rem; font-weight: 700;">Nossos Especialistas Acadêmicos</p>
-                <div class="team-pill">
-                    Iago Manguary <span>Consultor UFT</span>
+            <div class="hero-image-wrapper">
+                <div class="hero-image-bg">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" alt="Consultor Ampla">
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="faq" class="faq">
-        <h2>Dúvidas Frequentes</h2>
-        
-        <details>
-            <summary>O que é uma Empresa Júnior (EJ)?</summary>
-            <div class="faq-text">Uma Empresa Júnior é uma associação civil sem fins lucrativos gerida exclusivamente por estudantes de graduação. Na AMPLA, somos alunos de Administração da UFT, prestando serviços de consultoria validados por professores, com investimento acessível para fomentar o mercado do Tocantins.</div>
-        </details>
-        
-        <details>
-            <summary>Como funciona o Diagnóstico Gratuito?</summary>
-            <div class="faq-text">Realizamos uma reunião inicial de alinhamento para entender as "dores" da sua empresa. A partir dessa conversa, elaboramos um diagnóstico preliminar e uma proposta de intervenção estratégica, sem qualquer custo ou compromisso inicial.</div>
-        </details>
-        
-        <details>
-            <summary>A AMPLA atende empresas fora de Palmas - TO?</summary>
-            <div class="faq-text">Sim! Embora nossa atuação presencial seja focada em Palmas, possuímos metodologias remotas perfeitamente estruturadas para atender processos de recrutamento, mapeamento de processos e diagnósticos financeiros em qualquer região do Brasil.</div>
-        </details>
-    </section>
-
-    <div class="bottom-cta">
-        <section id="contato" class="cta-card">
-            <h2>Vamos construir resultados?</h2>
-            <p>Dê o primeiro passo para profissionalizar a gestão do seu negócio hoje mesmo.</p>
-            <a href="#" class="btn btn-navy" style="font-size: 1.15rem; padding: 20px 48px;">Solicitar Contato Comercial</a>
         </section>
     </div>
 
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col" style="grid-column: span 1;">
-                <div class="footer-logo-box">
-                    <img src="aplicacoes-logo-ampla-png.png" alt="AMPLA Consultoria Jr." class="footer-logo-img">
+    <section class="services-section">
+        <h2>Centralize finanças, processos e pessoas com a Ampla</h2>
+        <p>Ganhe maturidade gerencial e foco no crescimento da sua empresa em Palmas.</p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="Gestão" class="service-img">
+                <div class="service-content">
+                    <h3>Gestão Empresarial & Financeira</h3>
+                    <p>Estruturação de custos, plano de negócios e processos simplificados.</p>
                 </div>
-                <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.6;">Acelerando empresas e forjando consultores imparáveis no ecossistema da UFT.</p>
             </div>
             
-            <div class="footer-col">
-                <h4>Nossas Soluções</h4>
-                <ul>
-                    <li><a href="#">Gestão Empresarial</a></li>
-                    <li><a href="#">Gestão Financeira</a></li>
-                    <li><a href="#">Recrutamento e RH</a></li>
-                    <li><a href="#">Logística de Eventos</a></li>
-                </ul>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=500&q=80" alt="RH" class="service-img">
+                <div class="service-content">
+                    <h3>Gestão de Pessoas</h3>
+                    <p>Recrutamento, pesquisa de clima e avaliações de desempenho integradas.</p>
+                </div>
             </div>
-            
-            <div class="footer-col">
-                <h4>A Ampla</h4>
-                <ul>
-                    <li><a href="#">Processo Seletivo Trainee</a></li>
-                    <li><a href="#">Sobre a Empresa</a></li>
-                    <li><a href="#">Ecossistema UFT</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-col">
-                <h4>Fale Conosco</h4>
-                <ul style="color: var(--text-light); font-size: 0.95rem; line-height: 1.8;">
-                    <li>Universidade Federal do Tocantins</li>
-                    <li>Campus de Palmas - TO</li>
-                    <li>contato@amplajr.com.br</li>
-                </ul>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=500&q=80" alt="Eventos" class="service-img">
+                <div class="service-content">
+                    <h3>Organização de Eventos</h3>
+                    <p>Logística, credenciamento e gestão de campeonatos como o Greve x Boleto.</p>
+                </div>
             </div>
         </div>
+    </section>
+
+    <section class="results-section">
+        <div class="results-box">
+            <div class="results-left">
+                <h2>Quem escolhe Ampla vê resultado!</h2>
+                <div class="results-list">
+                    <div class="result-item active">Decisões baseadas em caixa real</div>
+                    <div class="result-item">Mais facilidade para atrair e manter talentos</div>
+                    <div class="result-item">Processos operacionais organizados</div>
+                    <div class="result-item">Rigor e excelência da UFT</div>
+                </div>
+            </div>
+            
+            <div class="results-right">
+                <div class="results-image" style="background: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
+                
+                <div class="floating-card">
+                    <h4>100%</h4>
+                    <p>foco no desenvolvimento do ecossistema local.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="audience-section">
+        <h2>Do pequeno comércio ao grande evento, a Ampla deixa a rotina mais profissional</h2>
         
-        <div class="footer-bottom">
-            &copy; 2026 AMPLA Consultoria Jr. Todos os direitos reservados. Feito em Palmas.
+        <div class="audience-grid">
+            <div class="audience-card">
+                <div class="tag" style="color: var(--ampla-yellow);">Pequenas</div>
+                <div>
+                    <h3>Tudo que você precisa para estruturar seu negócio do zero e sem amadorismo</h3>
+                    <a href="#">Saiba mais ></a>
+                </div>
+            </div>
+
+            <div class="audience-card">
+                <div class="tag">Médias</div>
+                <div>
+                    <h3>Uma consultoria completa para modernizar o RH e otimizar os custos</h3>
+                    <a href="#">Saiba mais ></a>
+                </div>
+            </div>
+
+            <div class="audience-card">
+                <div class="tag" style="color: #F43F5E;">Eventos</div>
+                <div>
+                    <h3>Soluções modulares, de credenciamento à logística, do jeito que sua marca precisa</h3>
+                    <a href="#">Saiba mais ></a>
+                </div>
+            </div>
         </div>
-    </footer>
+    </section>
 
 </body>
 </html>
